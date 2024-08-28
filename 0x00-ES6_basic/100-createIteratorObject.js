@@ -2,7 +2,6 @@ export default function createIteratorObject(report) {
   return {
     [Symbol.iterator]() {
       const keys = Object.keys(report.allEmployees);
-      console.log(keys);
       let allEmployees = [];
 
       keys.map(deptartment => {
@@ -21,9 +20,11 @@ export default function createIteratorObject(report) {
             return { value: undefined, done: true };
           }
 
-          return { value: allEmployees[i++], done: false};
-        }
+          const obj = { value: allEmployees[i], done: false };
+          i += 1;
+          return obj;
+        },
       };
-    }
+    },
   };
 }
