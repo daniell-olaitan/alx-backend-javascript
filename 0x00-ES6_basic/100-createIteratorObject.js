@@ -4,7 +4,7 @@ export default function createIteratorObject(report) {
       const keys = Object.keys(report.allEmployees);
       let allEmployees = [];
 
-      keys.map(deptartment => {
+      keys.map((deptartment) => {
         const employees = report.allEmployees[deptartment];
         allEmployees = [...allEmployees, ...employees];
 
