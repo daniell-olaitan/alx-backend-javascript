@@ -1,11 +1,15 @@
 import AppController from '../controllers/AppController';
 import StudentsController from '../controllers/StudentsController';
 
-const { Router } = require('express');
+/**
+ * Bind the routes to the appropriate handler
+ * @param {Express} app The Express app.
+ */
+const mapRoutes = (app) => {
+  app.get('/', AppController.getHomepage);
+  app.get('/students', StudentsController.getAllStudents);
+  app.get('/students/:major', StudentsController.getAllStudentsByMajor);
+};
 
-const router = Router();
-
-router.get('/', AppController.getHomepage);
-router.get('/students', StudentsController.getAllStudents);
-router.get('/students/:major', StudentsController.getAllStudentsByMajor);
-export default router;
+export default mapRoutes;
+module.exports = mapRoutes;
